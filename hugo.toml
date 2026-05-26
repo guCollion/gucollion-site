@@ -1,0 +1,36 @@
+baseURL = "https://gucollion.com/"
+languageCode = "zh-cn"
+title = "guCollion"
+theme = "PaperMod"
+
+[pagination]
+pagerSize = 5
+
+[params]
+author = "孤克恩"
+defaultTheme = "dark"
+
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+
+homeInfoParams.Title = "欢迎来到 孤克恩 的网站"
+homeInfoParams.Content = "这里是我的个人博客、游戏开发日志与作品展示网站。"
+
+[[menu.main]]
+identifier = "blog"
+name = "博客"
+url = "/posts/"
+weight = 1
+
+[[menu.main]]
+identifier = "games"
+name = "游戏"
+url = "/games/"
+weight = 2
+
+[[menu.main]]
+identifier = "about"
+name = "关于"
+url = "/about/"
+weight = 3
