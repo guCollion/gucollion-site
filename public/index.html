@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="孤克恩">
 <link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.cd9298b33628769aa1bc1acebbbfd7aa11ce81dfe03484d479e1907760249a1d.css" integrity="sha256-zZKYszYodpqhvBrOu7/XqhHOgd/gNITUeeGQd2Akmh0=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6d2591ecaea4add472c921a45e7d74f2c695f72cb96bee7df497414aa9880bfc.css" integrity="sha256-bSWR7K6krdRyySGkXn108saV9yy5a&#43;599JdBSqmIC/w=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -38,148 +38,172 @@
 </script>
 </head>
 <body class="list" id="top">
-    <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="guCollion (Alt + H)">guCollion</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <ul id="menu" class="menu">
-            <li>
-                <a href="http://localhost:1313/posts/" title="博客">
-                    <span>博客</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/games/" title="游戏">
-                    <span>游戏</span>
-                </a>
-            </li>
-            <li>
-                <a href="http://localhost:1313/about/" title="关于">
-                    <span>关于</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main"> 
-<article class="first-entry home-info">
-    <header class="entry-header">
-        <h1>欢迎来到 孤克恩 的网站</h1>
-    </header>
-    <div class="entry-content md-content">
-        
-        <p>这里是我的个人博客、游戏开发日志与作品展示网站。</p>
-
+    <header class="top-header">
+    <div class="logo-area">
+        <span class="logo-title">孤克恩的个人空间</span>
+        <span class="logo-sub">guCollion.com</span>
     </div>
-    <footer class="entry-footer">
-        <div class="social-icons" >
+
+
+</header>
+
+<div id="site-loader">
+    <div class="loader-stars"></div>
+
+    <div class="loader-content">
+        <h1>孤克恩的个人空间</h1>
+        <p>Loading...</p>
+    </div>
 </div>
 
-    </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">guCollion</a></span> · 
+<script>
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("site-loader")
+                .classList.add("hide");
+        }, 1200);
+    });
+</script>
 
+<main class="main">
+<div class="anime-page" id="animePage">
+    <header class="top-header">
+        <div class="logo-area">
+            <span class="logo-title">孤克恩的个人空间</span>
+            <span class="logo-sub">guCollion.com</span>
+        </div>
     
-    
-    <span>
-        Powered by
-        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
-        <polyline points="17 11 12 6 7 11"></polyline>
-        <polyline points="17 18 12 13 7 18"></polyline>
-    </svg>
-</a>
+        <nav class="top-nav">
+            <a href="/">首页</a>
+            <a href="/gallery/">相册</a>
+            <a href="/watch/">看一看</a>
+            <a href="/ask/">问一问</a>
+            <a href="/games/">小游戏</a>
+        </nav>
+    </header>
+    <div class="star-layer">
+        <span></span>
+    </div>
+    <div class="meteor meteor-1"></div>
+    <div class="meteor meteor-2"></div>
+    <div class="meteor meteor-3"></div>
+    <div class="meteor meteor-4"></div>
+    <div class="meteor meteor-5"></div>
+    <div class="meteor meteor-6"></div>
+    <section class="home-left">
+        <div>
+            <p class="site-tag">guCollion.com</p>
+            <h1 id="typingText"></h1>
+            <p class="home-desc">在时间的长河里，收集星光、音乐、故事，以及那些微小而闪耀的瞬间。</p>
+
+            <div class="home-buttons">
+                <a href="/posts/">进入博客</a>
+                <a href="/about/">关于我</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-widgets">
+        <div class="glass-card">
+            <h2>日历</h2>
+            <p class="date-main" id="dateText">Loading...</p>
+            <p id="weekText"></p>
+        </div>
+
+        <div class="glass-card music-card">
+            <h2>音乐播放器</h2>
+        
+            <meting-js server="netease" type="playlist" id="4945936082" fixed="false" mini="false" autoplay="false"
+                theme="#c7d2fe" loop="all" order="random" preload="auto" volume="0.6">
+            </meting-js>
+        </div>
+
+        <div class="glass-card mood-card">
+            <h2>今日心情</h2>
+            <p id="moodText">今天也要把微小的光保存下来。</p>
+        </div>
+
+        <div class="glass-card">
+            <h2>留言板</h2>
+            <p>欢迎留下你的足迹，让我知道你曾来过这里。</p>
+            <a class="card-link" href="/guestbook/">进入留言板</a>
+        </div>
+    </section>
+</div>
 
 <script>
-    let menu = document.getElementById('menu');
-    if (menu) {
-        
-        const scrollPosition = localStorage.getItem("menu-scroll-position");
-        if (scrollPosition) {
-            menu.scrollLeft = parseInt(scrollPosition, 10);
-        }
-        
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    const now = new Date();
+    const hour = now.getHours();
+    const bg = hour >= 6 && hour < 18 ? "/images/bg1.jpg" : "/images/bg2.jpg";
+    document.getElementById("animePage").style.backgroundImage = `url('${bg}')`;
+
+    document.getElementById("dateText").innerText =
+        now.getFullYear() + "." +
+        String(now.getMonth() + 1).padStart(2, "0") + "." +
+        String(now.getDate()).padStart(2, "0");
+
+    document.getElementById("weekText").innerText =
+        ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"][now.getDay()];
+        document.getElementById("moodText").innerText = "今天也要把微小的光保存下来。";
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<script>
+    const lines = [
+        "欢迎回来，\n这里是孤克恩的\n个人空间",
+        "时间会留下痕迹。",
+        "把微小的光收藏在这里。",
+        "直到世界尽头，我们仍会相遇。"
+    ];
+
+    const el = document.getElementById("typingText");
+
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeLine() {
+        if (!el) return;
+
+        const current = lines[lineIndex];
+        el.textContent = current.slice(0, charIndex);
+        charIndex++;
+
+        if (charIndex <= current.length) {
+            setTimeout(typeLine, 70);
+        } else {
+            setTimeout(() => {
+                charIndex = 0;
+                lineIndex = (lineIndex + 1) % lines.length;
+                typeLine();
+            }, 2600);
         }
     }
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
+    typeLine();
+</script>
+
+    </main>
+    <button id="backToTop" class="back-to-top">↑</button>
+
+<script>
+    const backToTop = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
     });
 
-</script>
-<script>
-    var toplink = document.getElementById("top-link");
-    window.onscroll = function () {
-        const scrollThreshold = window.innerHeight;
-        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
-            toplink.classList.remove("hidden");
-        } else {
-            toplink.classList.add("hidden");
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        const html = document.querySelector("html");
-        if (html.dataset.theme === "dark") {
-            html.dataset.theme = 'light';
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            html.dataset.theme = 'dark';
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script></body>
 
 </html>

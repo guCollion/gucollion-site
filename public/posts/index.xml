@@ -6,15 +6,15 @@
     <description>Recent content in Posts on guCollion</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 27 May 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的第一篇博客</title>
       <link>http://localhost:1313/posts/hello/</link>
-      <pubDate>Wed, 27 May 2026 00:00:00 +0800</pubDate>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/hello/</guid>
-      <description>&lt;h1 id=&#34;欢迎来到-孤克恩-的网站&#34;&gt;欢迎来到 孤克恩 的网站&lt;/h1&gt;
-&lt;p&gt;这是我的个人博客。&lt;/p&gt;
+      <description>&lt;p&gt;欢迎来到孤克恩的网站。&lt;/p&gt;
+&lt;p&gt;这里是我的个人博客。&lt;/p&gt;
 &lt;p&gt;未来我会在这里：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;分享自己的生活&lt;/li&gt;

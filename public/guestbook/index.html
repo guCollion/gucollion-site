@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="dark">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>留言板 | guCollion</title>
+<meta name="keywords" content="">
+<meta name="description" content="留言板
+这里以后会放访客留言功能。
+现在可以先当作一个小公告板使用。">
+<meta name="author" content="孤克恩">
+<link rel="canonical" href="http://localhost:1313/guestbook/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6d2591ecaea4add472c921a45e7d74f2c695f72cb96bee7df497414aa9880bfc.css" integrity="sha256-bSWR7K6krdRyySGkXn108saV9yy5a&#43;599JdBSqmIC/w=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/guestbook/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="top-header">
+    <div class="logo-area">
+        <span class="logo-title">孤克恩的个人空间</span>
+        <span class="logo-sub">guCollion.com</span>
+    </div>
+
+
+</header>
+
+<div id="site-loader">
+    <div class="loader-stars"></div>
+
+    <div class="loader-content">
+        <h1>孤克恩的个人空间</h1>
+        <p>Loading...</p>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("site-loader")
+                .classList.add("hide");
+        }, 1200);
+    });
+</script>
+
+<main class="main">
+
+<article class="post-single">
+
+    <header class="post-header">
+        <h1 class="post-title">
+            留言板
+        </h1>
+    </header>
+
+    <div class="post-content">
+        <h1 id="留言板">留言板</h1>
+<p>这里以后会放访客留言功能。</p>
+<p>现在可以先当作一个小公告板使用。</p>
+
+    </div>
+
+    <div class="comments-area">
+        <script src="https://giscus.app/client.js" data-repo="guCollion/gucollion-site" data-repo-id="R_kgDOSogtSg"
+    data-category="General" data-category-id="DIC_kwDOSogtSs4C99Nf" data-mapping="pathname" data-strict="0"
+    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme"
+    data-lang="en" crossorigin="anonymous" async>
+    </script>
+    </div>
+
+</article>
+
+
+    </main>
+    <button id="backToTop" class="back-to-top">↑</button>
+
+<script>
+    const backToTop = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add("show");
+        } else {
+            backToTop.classList.remove("show");
+        }
+    });
+
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script></body>
+
+</html>

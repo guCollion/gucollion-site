@@ -1,0 +1,119 @@
+{{ define "main" }}
+<div class="anime-page" id="animePage">
+    <header class="top-header">
+        <div class="logo-area">
+            <span class="logo-title">孤克恩的个人空间</span>
+            <span class="logo-sub">guCollion.com</span>
+        </div>
+    
+        <nav class="top-nav">
+            <a href="/">首页</a>
+            <a href="/gallery/">相册</a>
+            <a href="/watch/">看一看</a>
+            <a href="/ask/">问一问</a>
+            <a href="/games/">小游戏</a>
+        </nav>
+    </header>
+    <div class="star-layer">
+        <span></span>
+    </div>
+    <div class="meteor meteor-1"></div>
+    <div class="meteor meteor-2"></div>
+    <div class="meteor meteor-3"></div>
+    <div class="meteor meteor-4"></div>
+    <div class="meteor meteor-5"></div>
+    <div class="meteor meteor-6"></div>
+    <section class="home-left">
+        <div>
+            <p class="site-tag">guCollion.com</p>
+            <h1 id="typingText"></h1>
+            <p class="home-desc">在时间的长河里，收集星光、音乐、故事，以及那些微小而闪耀的瞬间。</p>
+
+            <div class="home-buttons">
+                <a href="/posts/">进入博客</a>
+                <a href="/about/">关于我</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-widgets">
+        <div class="glass-card">
+            <h2>日历</h2>
+            <p class="date-main" id="dateText">Loading...</p>
+            <p id="weekText"></p>
+        </div>
+
+        <div class="glass-card music-card">
+            <h2>音乐播放器</h2>
+        
+            <meting-js server="netease" type="playlist" id="4945936082" fixed="false" mini="false" autoplay="false"
+                theme="#c7d2fe" loop="all" order="random" preload="auto" volume="0.6">
+            </meting-js>
+        </div>
+
+        <div class="glass-card mood-card">
+            <h2>今日心情</h2>
+            <p id="moodText">今天也要把微小的光保存下来。</p>
+        </div>
+
+        <div class="glass-card">
+            <h2>留言板</h2>
+            <p>欢迎留下你的足迹，让我知道你曾来过这里。</p>
+            <a class="card-link" href="/guestbook/">进入留言板</a>
+        </div>
+    </section>
+</div>
+
+<script>
+    const now = new Date();
+    const hour = now.getHours();
+    const bg = hour >= 6 && hour < 18 ? "/images/bg1.jpg" : "/images/bg2.jpg";
+    document.getElementById("animePage").style.backgroundImage = `url('${bg}')`;
+
+    document.getElementById("dateText").innerText =
+        now.getFullYear() + "." +
+        String(now.getMonth() + 1).padStart(2, "0") + "." +
+        String(now.getDate()).padStart(2, "0");
+
+    document.getElementById("weekText").innerText =
+        ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"][now.getDay()];
+        document.getElementById("moodText").innerText = "今天也要把微小的光保存下来。";
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<script>
+    const lines = [
+        "欢迎回来，\n这里是孤克恩的\n个人空间",
+        "时间会留下痕迹。",
+        "把微小的光收藏在这里。",
+        "直到世界尽头，我们仍会相遇。"
+    ];
+
+    const el = document.getElementById("typingText");
+
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeLine() {
+        if (!el) return;
+
+        const current = lines[lineIndex];
+        el.textContent = current.slice(0, charIndex);
+        charIndex++;
+
+        if (charIndex <= current.length) {
+            setTimeout(typeLine, 70);
+        } else {
+            setTimeout(() => {
+                charIndex = 0;
+                lineIndex = (lineIndex + 1) % lines.length;
+                typeLine();
+            }, 2600);
+        }
+    }
+
+    typeLine();
+</script>
+{{ end }}

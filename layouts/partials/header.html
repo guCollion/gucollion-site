@@ -1,0 +1,27 @@
+<header class="top-header">
+    <div class="logo-area">
+        <span class="logo-title">孤克恩的个人空间</span>
+        <span class="logo-sub">guCollion.com</span>
+    </div>
+
+
+</header>
+
+<div id="site-loader">
+    <div class="loader-stars"></div>
+
+    <div class="loader-content">
+        <h1>孤克恩的个人空间</h1>
+        <p>Loading...</p>
+    </div>
+</div>
+
+<script>
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("site-loader")
+                .classList.add("hide");
+        }, 1200);
+    });
+</script>
+

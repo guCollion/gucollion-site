@@ -9,10 +9,15 @@ pagerSize = 5
 [params]
 author = "孤克恩"
 defaultTheme = "dark"
+  ShowReadingTime = false
+  ShowPostNavLinks = false
+  ShowBreadCrumbs = false
+  ShowCodeCopyButtons = false
+  ShowWordCount = false
+  ShowToc = false
+  hideMeta = true
 
-ShowReadingTime = true
-ShowShareButtons = true
-ShowPostNavLinks = true
+
 
 homeInfoParams.Title = "欢迎来到 孤克恩 的网站"
 homeInfoParams.Content = "这里是我的个人博客、游戏开发日志与作品展示网站。"
@@ -34,3 +39,8 @@ identifier = "about"
 name = "关于"
 url = "/about/"
 weight = 3
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
