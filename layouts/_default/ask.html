@@ -1,0 +1,91 @@
+{{ define "main" }}
+
+<div class="ask-page">
+    <div class="ask-container">
+        <h1>问一问</h1>
+
+        <div class="chat-box" id="chat-box">
+            <div class="ai-message">
+                你好，我是孤克恩的 AI 助手。
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="user-input" placeholder="输入你想说的话…">
+            <button id="send-btn">发送</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const sendBtn = document.getElementById("send-btn");
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+
+    function sendMessage() {
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        // 用户消息
+        const userMsg = document.createElement("div");
+        userMsg.className = "user-message";
+        userMsg.innerText = text;
+
+        chatBox.appendChild(userMsg);
+
+        // 清空输入框
+        input.value = "";
+
+       fetch("https://morning-river-e0bf.gucollion.workers.dev", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                messages: [
+                    {
+                        role: "system",
+                        content: "你是孤克恩网站中的 AI 助手，名叫孤萝娜,说话温柔、自然、带一点二次元感。"
+                    },
+                    {
+                        role: "user",
+                        content: text
+                    }
+                ]
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                const reply =
+                    data.choices?.[0]?.message?.content ||
+                    JSON.stringify(data, null, 2);
+
+                const aiMsg = document.createElement("div");
+                aiMsg.className = "ai-message";
+                aiMsg.innerText = reply;
+
+                chatBox.appendChild(aiMsg);
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(() => {
+
+                const aiMsg = document.createElement("div");
+                aiMsg.className = "ai-message";
+                aiMsg.innerText = "连接失败。";
+
+                chatBox.appendChild(aiMsg);
+            });
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
+    });
+</script>
+{{ end }}

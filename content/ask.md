@@ -1,9 +1,9 @@
 ---
 title: "问一问"
-draft: false
-ShowShareButtons: false
+layout: "ask"
+url: "/ask/"
 ---
 
 # 问一问
 
-这里以后会接入 AI 聊天功能。
+AI 正在苏醒……

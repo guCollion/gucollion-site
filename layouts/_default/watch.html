@@ -1,0 +1,68 @@
+{{ define "main" }}
+
+<div class="watch-page">
+    <div class="watch-header">
+        <h1>看一看</h1>
+        <p>收藏那些让我驻足的瞬间。</p>
+    </div>
+
+    <div class="watch-grid">
+        {{ range .Site.Data.videos }}
+    
+        <div class="video-card" onclick="window.open('https://www.bilibili.com/video/{{ .bvid }}/','_blank')">
+    
+            <div class="video-cover">
+                <img class="video-cover-img" src="{{ .cover }}">
+            </div>
+    
+            <div class="video-info">
+                <span class="video-tag">{{ .tag }}</span>
+    
+                <h3>{{ .title }}</h3>
+    
+                <p>{{ .desc }}</p>
+    
+                <div class="video-meta">
+                    <span>▶ {{ .views }}</span>
+                    <span>{{ .time }}</span>
+                </div>
+            </div>
+    
+        </div>
+    
+        {{ end }}
+    </div>
+    </div>
+        
+    </div>
+</div>
+
+<div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+        <button id="closeVideo" class="video-close">×</button>
+
+        <h2 id="modalTitle"></h2>
+
+        <div class="video-player-placeholder">
+            <iframe id="biliPlayer" src="" allowfullscreen="true"></iframe>
+        </div>
+
+        <p id="modalDesc"></p>
+
+        <a id="modalLink" class="bili-link" href="#" target="_blank">
+            去 B站观看
+        </a>
+    </div>
+</div>
+
+<script>
+    const cards = document.querySelectorAll(".video-card");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const bvid = card.dataset.bvid;
+            window.open(`https://www.bilibili.com/video/${bvid}/`, "_blank");
+        });
+    });
+</script>
+{{ end }}

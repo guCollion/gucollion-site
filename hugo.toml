@@ -1,6 +1,6 @@
 baseURL = "https://gucollion.com/"
 languageCode = "zh-cn"
-title = "guCollion"
+title = "孤克恩的个人空间"
 theme = "PaperMod"
 
 [pagination]
@@ -8,6 +8,7 @@ pagerSize = 5
 
 [params]
 author = "孤克恩"
+description = "记录日常、音乐、故事，以及那些微小而闪耀的瞬间。"
 defaultTheme = "dark"
   ShowReadingTime = false
   ShowPostNavLinks = false

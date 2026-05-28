@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>guCollion</title>
+<title>孤克恩的个人空间</title>
 
-<meta name="description" content="">
+<meta name="description" content="记录日常、音乐、故事，以及那些微小而闪耀的瞬间。">
 <meta name="author" content="孤克恩">
 <link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6d2591ecaea4add472c921a45e7d74f2c695f72cb96bee7df497414aa9880bfc.css" integrity="sha256-bSWR7K6krdRyySGkXn108saV9yy5a&#43;599JdBSqmIC/w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54c9639cca3739f64201cc7e0ac974d8f3d909179c09457cb5c0587fc47a32dc.css" integrity="sha256-VMljnMo3OfZCAcx&#43;Csl02PPZCRecCUV8tcBYf8R6Mtw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -38,7 +38,8 @@
 </script>
 </head>
 <body class="list" id="top">
-    <header class="top-header">
+    
+<header class="top-header">
     <div class="logo-area">
         <span class="logo-title">孤克恩的个人空间</span>
         <span class="logo-sub">guCollion.com</span>
@@ -104,10 +105,18 @@
     </section>
 
     <section class="home-widgets">
-        <div class="glass-card">
-            <h2>日历</h2>
-            <p class="date-main" id="dateText">Loading...</p>
-            <p id="weekText"></p>
+        <div class="glass-card calendar-card">
+            <div class="month-calendar">
+                <div class="month-title">
+                    <span id="calendarYear">2026</span><b>/</b><span id="calendarMonth">05</span>
+                </div>
+        
+                <div class="week-row">
+                    <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                </div>
+        
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
         </div>
 
         <div class="glass-card music-card">
@@ -182,6 +191,46 @@
     }
 
     typeLine();
+
+    function renderMonthCalendar() {
+            const grid = document.getElementById("calendarGrid");
+            const yearEl = document.getElementById("calendarYear");
+            const monthEl = document.getElementById("calendarMonth");
+
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = today.getMonth();
+
+            yearEl.innerText = year;
+            monthEl.innerText = String(month + 1).padStart(2, "0");
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const days = new Date(year, month + 1, 0).getDate();
+
+            grid.innerHTML = "";
+
+            for (let i = 0; i < firstDay; i++) {
+                grid.appendChild(document.createElement("div"));
+            }
+
+            for (let day = 1; day <= days; day++) {
+                const item = document.createElement("div");
+                item.className = "calendar-day";
+
+                if (day === today.getDate()) {
+                    item.classList.add("today");
+                }
+
+                item.innerHTML = `
+      <strong>${day}</strong>
+      <small></small>
+    `;
+
+                grid.appendChild(item);
+            }
+        }
+
+        renderMonthCalendar();
 </script>
 
     </main>

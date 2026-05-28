@@ -5,16 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>看一看 | guCollion</title>
+<title>看一看 | 孤克恩的个人空间</title>
 <meta name="keywords" content="">
-<meta name="description" content="看一看
-这里以后会放：
-
-视频
-">
+<meta name="description" content="看一看 - 孤克恩的个人空间">
 <meta name="author" content="孤克恩">
 <link rel="canonical" href="http://localhost:1313/watch/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6d2591ecaea4add472c921a45e7d74f2c695f72cb96bee7df497414aa9880bfc.css" integrity="sha256-bSWR7K6krdRyySGkXn108saV9yy5a&#43;599JdBSqmIC/w=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54c9639cca3739f64201cc7e0ac974d8f3d909179c09457cb5c0587fc47a32dc.css" integrity="sha256-VMljnMo3OfZCAcx&#43;Csl02PPZCRecCUV8tcBYf8R6Mtw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -40,7 +36,8 @@
 </script>
 </head>
 <body id="top">
-    <header class="top-header">
+    
+<header class="top-header">
     <div class="logo-area">
         <span class="logo-title">孤克恩的个人空间</span>
         <span class="logo-sub">guCollion.com</span>
@@ -69,33 +66,117 @@
 
 <main class="main">
 
-<article class="post-single">
-
-    <header class="post-header">
-        <h1 class="post-title">
-            看一看
-        </h1>
-    </header>
-
-    <div class="post-content">
-        <h1 id="看一看">看一看</h1>
-<p>这里以后会放：</p>
-<ul>
-<li>视频</li>
-</ul>
-
+<div class="watch-page">
+    <div class="watch-header">
+        <h1>看一看</h1>
+        <p>收藏那些让我驻足的瞬间。</p>
     </div>
 
-    <div class="comments-area">
-        <script src="https://giscus.app/client.js" data-repo="guCollion/gucollion-site" data-repo-id="R_kgDOSogtSg"
-    data-category="General" data-category-id="DIC_kwDOSogtSs4C99Nf" data-mapping="pathname" data-strict="0"
-    data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme"
-    data-lang="en" crossorigin="anonymous" async>
-    </script>
+    <div class="watch-grid">
+        
+    
+        <div class="video-card" onclick="window.open('https://www.bilibili.com/video/BV1GJ411x7h7/','_blank')">
+    
+            <div class="video-cover">
+                <img class="video-cover-img" src="/images/watch1.jpg">
+            </div>
+    
+            <div class="video-info">
+                <span class="video-tag">MV</span>
+    
+                <h3>Never Gonna Give You Up - Rick Astley</h3>
+    
+                <p>【官方 MV】</p>
+    
+                <div class="video-meta">
+                    <span>▶ 9944.8万</span>
+                    <span>Bilibili</span>
+                </div>
+            </div>
+    
+        </div>
+    
+        
+    
+        <div class="video-card" onclick="window.open('https://www.bilibili.com/video/BV1y54y1s74a/','_blank')">
+    
+            <div class="video-cover">
+                <img class="video-cover-img" src="/images/watch2.jpg">
+            </div>
+    
+            <div class="video-info">
+                <span class="video-tag">视频</span>
+    
+                <h3>印尼魔性电信广告原版完整版IndiHome Paket Phoenix</h3>
+    
+                <p>【8K超高清重制版】</p>
+    
+                <div class="video-meta">
+                    <span>▶ 654.9万</span>
+                    <span>Bilibili</span>
+                </div>
+            </div>
+    
+        </div>
+    
+        
+    
+        <div class="video-card" onclick="window.open('https://www.bilibili.com/video/BV1x5411o7Kn/','_blank')">
+    
+            <div class="video-cover">
+                <img class="video-cover-img" src="/images/watch3.jpg">
+            </div>
+    
+            <div class="video-info">
+                <span class="video-tag">MAD</span>
+    
+                <h3>(全站最清晰画质/音频修复)Bad apple！！！坏苹果！！！</h3>
+    
+                <p>【4K 60FPS】</p>
+    
+                <div class="video-meta">
+                    <span>▶ 835.2万</span>
+                    <span>Bilibili</span>
+                </div>
+            </div>
+    
+        </div>
+    
+        
     </div>
+    </div>
+        
+    </div>
+</div>
 
-</article>
+<div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+        <button id="closeVideo" class="video-close">×</button>
 
+        <h2 id="modalTitle"></h2>
+
+        <div class="video-player-placeholder">
+            <iframe id="biliPlayer" src="" allowfullscreen="true"></iframe>
+        </div>
+
+        <p id="modalDesc"></p>
+
+        <a id="modalLink" class="bili-link" href="#" target="_blank">
+            去 B站观看
+        </a>
+    </div>
+</div>
+
+<script>
+    const cards = document.querySelectorAll(".video-card");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            const bvid = card.dataset.bvid;
+            window.open(`https://www.bilibili.com/video/${bvid}/`, "_blank");
+        });
+    });
+</script>
 
     </main>
     <button id="backToTop" class="back-to-top">↑</button>
