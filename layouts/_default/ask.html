@@ -5,8 +5,11 @@
         <h1>问一问</h1>
 
         <div class="chat-box" id="chat-box">
-            <div class="ai-message">
-                你好，我是孤克恩的 AI 助手。
+            <div class="message-row ai-row">
+                <img class="chat-avatar" src="/images/korona-avatar.png">
+                <div class="ai-message">
+                    你好，我是孤萝娜，孤克恩的 AI 助手。
+                </div>
             </div>
         </div>
 
@@ -22,6 +25,13 @@
     const input = document.getElementById("user-input");
     const chatBox = document.getElementById("chat-box");
 
+    let chatHistory = [
+            {
+                role: "system",
+                content: "你是孤克恩的网站中的 AI 助手，名叫孤萝娜，说话温柔、自然、带一点二次元感。"
+            }
+        ];
+
     function sendMessage() {
         const text = input.value.trim();
 
@@ -34,49 +44,83 @@
 
         chatBox.appendChild(userMsg);
 
+        // 显示思考中
+        const aiRow = document.createElement("div");
+        aiRow.className = "message-row ai-row";
+
+        const avatar = document.createElement("img");
+        avatar.className = "chat-avatar";
+        avatar.src = "/images/korona-avatar.png";
+
+        const loadingMsg = document.createElement("div");
+        loadingMsg.className = "ai-message";
+        loadingMsg.innerText = "孤萝娜正在输入 ●";
+
+        const typingTimer = startTypingAnimation(loadingMsg);
+
+        aiRow.appendChild(avatar);
+        aiRow.appendChild(loadingMsg);
+
+        chatBox.appendChild(aiRow);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
         // 清空输入框
         input.value = "";
 
-       fetch("https://morning-river-e0bf.gucollion.workers.dev", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                messages: [
-                    {
-                        role: "system",
-                        content: "你是孤克恩网站中的 AI 助手，名叫孤萝娜,说话温柔、自然、带一点二次元感。"
-                    },
-                    {
-                        role: "user",
-                        content: text
-                    }
-                ]
-            })
-        })
-            .then(res => res.json())
+       async function askAI(messages) {
+            const res = await fetch("/api/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ messages })
+            });
+
+            return await res.json();
+        }
+
+        async function getAIReply(messages) {
+            try {
+                return await askAI(messages);
+            } catch (e) {
+                await new Promise(resolve => setTimeout(resolve, 1200));
+                return await askAI(messages);
+            }
+        }
+        
+
+        chatHistory.push({
+            role: "user",
+            content: text
+        });
+
+        getAIReply(chatHistory)
+
+
             .then(data => {
+                clearInterval(typingTimer);
 
                 const reply =
                     data.choices?.[0]?.message?.content ||
-                    JSON.stringify(data, null, 2);
+                    "孤萝娜暂时没有想好怎么回答，请稍后再试。";
 
-                const aiMsg = document.createElement("div");
-                aiMsg.className = "ai-message";
-                aiMsg.innerText = reply;
+                typeText(loadingMsg, reply);
 
-                chatBox.appendChild(aiMsg);
+                chatHistory.push({
+                    role: "assistant",
+                    content: reply
+                });
+
+                if (chatHistory.length > 11) {
+                    chatHistory = [chatHistory[0], ...chatHistory.slice(-10)];
+                }
 
                 chatBox.scrollTop = chatBox.scrollHeight;
             })
             .catch(() => {
-
-                const aiMsg = document.createElement("div");
-                aiMsg.className = "ai-message";
-                aiMsg.innerText = "连接失败。";
-
-                chatBox.appendChild(aiMsg);
+                clearInterval(typingTimer);
+                loadingMsg.innerText =
+                    "网络有点不稳定，孤萝娜暂时连接不上。请稍后再试，或切换网络后重试。";
             });
     }
 
@@ -87,5 +131,44 @@
             sendMessage();
         }
     });
+
+    function typeText(element, text, speed = 28) {
+            element.innerText = "";
+
+            let index = 0;
+
+            const timer = setInterval(() => {
+                element.innerText += text[index];
+                index++;
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                if (index >= text.length) {
+                    clearInterval(timer);
+                }
+            }, speed);
+        }
+
+        function startTypingAnimation(element) {
+                let frame = 0;
+
+                return setInterval(() => {
+                    frame++;
+
+                    switch (frame % 3) {
+                        case 0:
+                            element.innerText = "孤萝娜正在输入 ●";
+                            break;
+
+                        case 1:
+                            element.innerText = "孤萝娜正在输入 ● ●";
+                            break;
+
+                        case 2:
+                            element.innerText = "孤萝娜正在输入 ● ● ●";
+                            break;
+                    }
+                }, 500);
+            }
 </script>
 {{ end }}

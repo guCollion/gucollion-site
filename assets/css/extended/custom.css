@@ -1680,4 +1680,31 @@ body {
     font-size: 20px;
 }
 
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.ai-row {
+    justify-content: flex-start;
+}
+
+.chat-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, .25);
+}
+
+.user-message {
+    margin-left: auto;
+}
+
+.ai-message {
+    margin-bottom: 0;
+}
+
 
