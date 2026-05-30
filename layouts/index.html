@@ -5,7 +5,7 @@
             <span class="logo-title">孤克恩的个人空间</span>
             <span class="logo-sub">guCollion.com</span>
         </div>
-    
+
         <nav class="top-nav">
             <a href="/">首页</a>
             <a href="/gallery/">相册</a>
@@ -42,21 +42,48 @@
                 <div class="month-title">
                     <span id="calendarYear">2026</span><b>/</b><span id="calendarMonth">05</span>
                 </div>
-        
+
                 <div class="week-row">
                     <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
                 </div>
-        
+
                 <div class="calendar-grid" id="calendarGrid"></div>
             </div>
         </div>
 
         <div class="glass-card music-card">
             <h2>音乐播放器</h2>
-        
-            <meting-js server="netease" type="playlist" id="4945936082" fixed="false" mini="false" autoplay="false"
-                theme="#c7d2fe" loop="all" order="random" preload="auto" volume="0.6">
-            </meting-js>
+
+            <div class="local-music-player">
+                <img id="musicCover" class="music-cover" src="">
+                <div class="music-info">
+                    <h3 id="musicTitle">歌曲名</h3>
+                    <p id="musicArtist">歌手</p>
+                </div>
+
+
+                <div class="music-progress">
+                    <span id="currentTime">0:00</span>
+                    <input id="progressBar" type="range" min="0" max="100" value="0">
+                    <span id="durationTime">0:00</span>
+                </div>
+
+
+                <div class="music-controls">
+                    <button id="playMode" class="play-mode">顺序播放</button>
+                    <button id="prevMusic">上一首</button>
+                    <button id="playMusic">播放</button>
+                    <button id="nextMusic">下一首</button>
+                </div>
+
+                <audio id="audioPlayer"></audio>
+
+                <div class="lyric-box" id="lyricBox">
+                    <div id="lyricLines"></div>
+                </div>
+
+                <div class="music-list" id="musicList"></div>
+            </div>
         </div>
 
         <div class="glass-card mood-card">
@@ -78,19 +105,8 @@
     const bg = hour >= 6 && hour < 18 ? "/images/bg1.jpg" : "/images/bg2.jpg";
     document.getElementById("animePage").style.backgroundImage = `url('${bg}')`;
 
-    document.getElementById("dateText").innerText =
-        now.getFullYear() + "." +
-        String(now.getMonth() + 1).padStart(2, "0") + "." +
-        String(now.getDate()).padStart(2, "0");
-
-    document.getElementById("weekText").innerText =
-        ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"][now.getDay()];
-        document.getElementById("moodText").innerText = "今天也要把微小的光保存下来。";
+    document.getElementById("moodText").innerText = "今天也要把微小的光保存下来。";
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
 <script>
     const lines = [
         "欢迎回来，\n这里是孤克恩的\n个人空间",
@@ -125,43 +141,279 @@
     typeLine();
 
     function renderMonthCalendar() {
-            const grid = document.getElementById("calendarGrid");
-            const yearEl = document.getElementById("calendarYear");
-            const monthEl = document.getElementById("calendarMonth");
+        const grid = document.getElementById("calendarGrid");
+        const yearEl = document.getElementById("calendarYear");
+        const monthEl = document.getElementById("calendarMonth");
 
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = today.getMonth();
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
 
-            yearEl.innerText = year;
-            monthEl.innerText = String(month + 1).padStart(2, "0");
+        yearEl.innerText = year;
+        monthEl.innerText = String(month + 1).padStart(2, "0");
 
-            const firstDay = new Date(year, month, 1).getDay();
-            const days = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+        const days = new Date(year, month + 1, 0).getDate();
 
-            grid.innerHTML = "";
+        grid.innerHTML = "";
 
-            for (let i = 0; i < firstDay; i++) {
-                grid.appendChild(document.createElement("div"));
+        for (let i = 0; i < firstDay; i++) {
+            grid.appendChild(document.createElement("div"));
+        }
+
+        for (let day = 1; day <= days; day++) {
+            const item = document.createElement("div");
+            item.className = "calendar-day";
+
+            if (day === today.getDate()) {
+                item.classList.add("today");
             }
 
-            for (let day = 1; day <= days; day++) {
-                const item = document.createElement("div");
-                item.className = "calendar-day";
-
-                if (day === today.getDate()) {
-                    item.classList.add("today");
-                }
-
-                item.innerHTML = `
+            item.innerHTML = `
       <strong>${day}</strong>
       <small></small>
     `;
 
-                grid.appendChild(item);
-            }
+            grid.appendChild(item);
+        }
+    }
+
+    renderMonthCalendar();
+
+
+</script>
+
+
+<div id="musicData" style="display:none;">
+    {{ range .Site.Data.music }}
+    <div class="music-item" data-title="{{ .title }}" data-artist="{{ .artist }}" data-file="{{ .file }}"
+        data-cover="{{ .cover }}" data-lyric="{{ .lyric }}">
+    </div>
+    {{ end }}
+</div>
+
+<script>
+    (function () {
+        const musicList = Array.from(document.querySelectorAll(".music-item")).map(item => ({
+            title: item.dataset.title,
+            artist: item.dataset.artist,
+            file: item.dataset.file,
+            cover: item.dataset.cover,
+            lyric: item.dataset.lyric
+        }));
+
+        if (!musicList.length) return;
+
+        let currentMusic = 0;
+
+        let playMode = "order";
+
+        const audioPlayer = document.getElementById("audioPlayer");
+        const musicCover = document.getElementById("musicCover");
+        const musicTitle = document.getElementById("musicTitle");
+        const musicArtist = document.getElementById("musicArtist");
+        const playMusic = document.getElementById("playMusic");
+        const prevMusic = document.getElementById("prevMusic");
+        const nextMusic = document.getElementById("nextMusic");
+        const playModeBtn = document.getElementById("playMode");
+
+        const progressBar = document.getElementById("progressBar");
+        const currentTime = document.getElementById("currentTime");
+        const durationTime = document.getElementById("durationTime");
+
+        const lyricBox = document.getElementById("lyricBox");
+        const lyricLines = document.getElementById("lyricLines");
+        let currentLyricIndex = -1;
+
+        let lyrics = [];
+
+        function parseLrc(text) {
+            return text.split("\n").map(line => {
+                const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+                if (!match) return null;
+
+                return {
+                    time: Number(match[1]) * 60 + Number(match[2]),
+                    text: match[3].trim()
+                };
+            }).filter(Boolean);
         }
 
-        renderMonthCalendar();
+        async function loadLyric(url) {
+    currentLyricIndex = -1;
+
+    if (!url) {
+        lyrics = [];
+        lyricLines.innerHTML = "<p>暂无歌词</p>";
+        return;
+    }
+
+    const res = await fetch(url);
+    const text = await res.text();
+
+    lyrics = parseLrc(text);
+
+    if (!lyrics.length) {
+        lyricLines.innerHTML = "<p>暂无歌词</p>";
+        return;
+    }
+
+    lyricLines.innerHTML = lyrics.map((line, index) => {
+        return `<p data-index="${index}">${line.text}</p>`;
+    }).join("");
+}
+
+        function formatTime(time) {
+            if (isNaN(time)) return "0:00";
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${String(seconds).padStart(2, "0")}`;
+        }
+
+        function loadMusic(index) {
+            const music = musicList[index];
+
+            musicCover.src = music.cover;
+            musicTitle.innerText = music.title;
+            musicArtist.innerText = music.artist;
+            audioPlayer.src = music.file;
+            loadLyric(music.lyric);
+        }
+
+        function playCurrentMusic() {
+            audioPlayer.play();
+            playMusic.innerText = "暂停";
+            musicCover.classList.add("playing");
+        }
+
+        playMusic.addEventListener("click", () => {
+            if (audioPlayer.paused) {
+                playCurrentMusic();
+            } else {
+                audioPlayer.pause();
+                playMusic.innerText = "播放";
+                musicCover.classList.remove("playing");
+            }
+        });
+
+        prevMusic.addEventListener("click", () => {
+            currentMusic = (currentMusic - 1 + musicList.length) % musicList.length;
+            loadMusic(currentMusic);
+            playCurrentMusic();
+            renderMusicList();
+        });
+
+        nextMusic.addEventListener("click", () => {
+            currentMusic = (currentMusic + 1) % musicList.length;
+            loadMusic(currentMusic);
+            playCurrentMusic();
+            renderMusicList();
+        });
+        playModeBtn.addEventListener("click", () => {
+            if (playMode === "order") {
+                playMode = "random";
+                playModeBtn.innerText = "随机播放";
+            } else if (playMode === "random") {
+                playMode = "single";
+                playModeBtn.innerText = "单曲循环";
+            } else {
+                playMode = "order";
+                playModeBtn.innerText = "顺序播放";
+            }
+        });
+
+
+        audioPlayer.addEventListener("loadedmetadata", () => {
+            durationTime.innerText = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener("timeupdate", () => {
+            if (!audioPlayer.duration) return;
+
+            progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            currentTime.innerText = formatTime(audioPlayer.currentTime);
+            let index = lyrics.findIndex((line, i) => {
+                const next = lyrics[i + 1];
+                return audioPlayer.currentTime >= line.time &&
+                    (!next || audioPlayer.currentTime < next.time);
+            });
+
+            if (index !== -1 && index !== currentLyricIndex) {
+                currentLyricIndex = index;
+
+                document.querySelectorAll("#lyricLines p").forEach(p => {
+                    p.classList.remove("active");
+                });
+
+                const activeLine = document.querySelector(`#lyricLines p[data-index="${index}"]`);
+
+                if (activeLine) {
+                    activeLine.classList.add("active");
+                    activeLine.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }
+            }
+        });
+
+        progressBar.addEventListener("input", () => {
+            if (!audioPlayer.duration) return;
+
+            audioPlayer.currentTime =
+                (progressBar.value / 100) * audioPlayer.duration;
+        });
+        audioPlayer.addEventListener("ended", () => {
+            if (playMode === "single") {
+                audioPlayer.currentTime = 0;
+                playCurrentMusic();
+                return;
+            }
+
+            if (playMode === "random") {
+                currentMusic = Math.floor(Math.random() * musicList.length);
+                loadMusic(currentMusic);
+                playCurrentMusic();
+                renderMusicList();
+                return;
+            }
+
+            nextMusic.click();
+        });
+
+        const musicListBox = document.getElementById("musicList");
+
+        function renderMusicList() {
+            musicListBox.innerHTML = "";
+
+            musicList.forEach((music, index) => {
+                const item = document.createElement("div");
+
+                item.className = "music-list-item";
+
+                if (index === currentMusic) {
+                    item.classList.add("active");
+                }
+
+                item.innerHTML = `
+            <span>${music.title}</span>
+            <small>${music.artist}</small>
+        `;
+
+                item.addEventListener("click", () => {
+                    currentMusic = index;
+                    loadMusic(currentMusic);
+                    playCurrentMusic();
+                    renderMusicList();
+                });
+
+                musicListBox.appendChild(item);
+            });
+        }
+
+        loadMusic(currentMusic);
+        renderMusicList();
+    })();
 </script>
+
 {{ end }}

@@ -1707,4 +1707,185 @@ body {
     margin-bottom: 0;
 }
 
+.local-music-player {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.music-cover {
+    width: 88px;
+    height: 88px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.music-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.music-info p {
+    margin: 6px 0 0;
+    opacity: .7;
+}
+
+.music-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.music-controls button {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.local-music-player {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.music-cover {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.music-info h3 {
+    font-size: 18px;
+    line-height: 1.3;
+    margin: 0;
+    word-break: break-word;
+}
+
+.music-info p {
+    margin: 6px 0 0;
+    opacity: .7;
+}
+
+.music-controls {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.music-controls button {
+    min-width: 72px;
+    white-space: nowrap;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+
+.music-progress {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    color: rgba(255, 255, 255, .65);
+    font-size: 13px;
+}
+
+#progressBar {
+    flex: 1;
+}
+
+.music-list {
+    grid-column: 1 / -1;
+    margin-top: 18px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.music-list-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, .68);
+}
+
+.music-list-item:hover,
+.music-list-item.active {
+    background: rgba(255, 255, 255, .1);
+    color: white;
+}
+
+.music-list-item small {
+    opacity: .65;
+}
+
+.lyric-box {
+    grid-column: 1 / -1;
+    margin-top: 14px;
+    min-height: 32px;
+    color: rgba(255, 255, 255, .82);
+    text-align: center;
+    font-size: 15px;
+}
+
+.lyric-box {
+    grid-column: 1 / -1;
+    margin-top: 14px;
+    height: 72px;
+    overflow: hidden;
+    text-align: center;
+    color: rgba(255, 255, 255, .45);
+    font-size: 14px;
+}
+
+#lyricLines p {
+    margin: 8px 0;
+    transition: .3s;
+}
+
+#lyricLines p.active {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 0 12px rgba(255, 255, 255, .35);
+}
+
+.play-mode {
+    grid-column: 1 / -1;
+    width: fit-content;
+    margin: 4px auto 0;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, .12);
+    color: white;
+    cursor: pointer;
+}
+
+.music-cover {
+    border-radius: 50%;
+    transition: .3s;
+}
+
+.music-cover.playing {
+    animation: musicSpin 12s linear infinite;
+}
+
+@keyframes musicSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 

@@ -2,25 +2,25 @@
 <html lang="en" dir="auto" data-theme="dark">
 
 <head>
-	<meta name="generator" content="Hugo 0.162.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.162.0"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>孤克恩的个人空间</title>
 
 <meta name="description" content="记录日常、音乐、故事，以及那些微小而闪耀的瞬间。">
 <meta name="author" content="孤克恩">
-<link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.48d51b0ed7f53bd53949c45db821b1b08874b8080e7495188c31a443faa9c91e.css" integrity="sha256-SNUbDtf1O9U5ScRduCGxsIh0uAgOdJUYjDGkQ/qpyR4=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://gucollion.com/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.45cf98a0e77f174b9cc4624a18ec8ef35bfde5eaa9d053b1ddbc46e61238ef31.css" integrity="sha256-Rc&#43;YoOd/F0ucxGJKGOyO81v95eqp0FOx3bxG5hI47zE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://gucollion.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://gucollion.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://gucollion.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://gucollion.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://gucollion.com/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/index.xml" title="rss">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/">
+<link rel="alternate" type="application/rss+xml" href="https://gucollion.com/index.xml" title="rss">
+<link rel="alternate" hreflang="en" href="https://gucollion.com/">
 <noscript>
     <style>
         #theme-toggle,
@@ -35,6 +35,29 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
+</script><meta property="og:url" content="https://gucollion.com/">
+  <meta property="og:site_name" content="孤克恩的个人空间">
+  <meta property="og:title" content="孤克恩的个人空间">
+  <meta property="og:description" content="记录日常、音乐、故事，以及那些微小而闪耀的瞬间。">
+  <meta property="og:locale" content="zh_cn">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="孤克恩的个人空间">
+  <meta name="twitter:description" content="记录日常、音乐、故事，以及那些微小而闪耀的瞬间。">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "孤克恩的个人空间",
+  "url": "https://gucollion.com/",
+  "description": "记录日常、音乐、故事，以及那些微小而闪耀的瞬间。",
+  "logo": "https://gucollion.com/favicon.ico",
+  "sameAs": [
+      
+  ]
+}
 </script>
 </head>
 <body class="list" id="top">
@@ -73,7 +96,7 @@
             <span class="logo-title">孤克恩的个人空间</span>
             <span class="logo-sub">guCollion.com</span>
         </div>
-    
+
         <nav class="top-nav">
             <a href="/">首页</a>
             <a href="/gallery/">相册</a>
@@ -110,21 +133,48 @@
                 <div class="month-title">
                     <span id="calendarYear">2026</span><b>/</b><span id="calendarMonth">05</span>
                 </div>
-        
+
                 <div class="week-row">
                     <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
                 </div>
-        
+
                 <div class="calendar-grid" id="calendarGrid"></div>
             </div>
         </div>
 
         <div class="glass-card music-card">
             <h2>音乐播放器</h2>
-        
-            <meting-js server="netease" type="playlist" id="4945936082" fixed="false" mini="false" autoplay="false"
-                theme="#c7d2fe" loop="all" order="random" preload="auto" volume="0.6">
-            </meting-js>
+
+            <div class="local-music-player">
+                <img id="musicCover" class="music-cover" src="">
+                <div class="music-info">
+                    <h3 id="musicTitle">歌曲名</h3>
+                    <p id="musicArtist">歌手</p>
+                </div>
+
+
+                <div class="music-progress">
+                    <span id="currentTime">0:00</span>
+                    <input id="progressBar" type="range" min="0" max="100" value="0">
+                    <span id="durationTime">0:00</span>
+                </div>
+
+
+                <div class="music-controls">
+                    <button id="playMode" class="play-mode">顺序播放</button>
+                    <button id="prevMusic">上一首</button>
+                    <button id="playMusic">播放</button>
+                    <button id="nextMusic">下一首</button>
+                </div>
+
+                <audio id="audioPlayer"></audio>
+
+                <div class="lyric-box" id="lyricBox">
+                    <div id="lyricLines"></div>
+                </div>
+
+                <div class="music-list" id="musicList"></div>
+            </div>
         </div>
 
         <div class="glass-card mood-card">
@@ -146,19 +196,8 @@
     const bg = hour >= 6 && hour < 18 ? "/images/bg1.jpg" : "/images/bg2.jpg";
     document.getElementById("animePage").style.backgroundImage = `url('${bg}')`;
 
-    document.getElementById("dateText").innerText =
-        now.getFullYear() + "." +
-        String(now.getMonth() + 1).padStart(2, "0") + "." +
-        String(now.getDate()).padStart(2, "0");
-
-    document.getElementById("weekText").innerText =
-        ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"][now.getDay()];
-        document.getElementById("moodText").innerText = "今天也要把微小的光保存下来。";
+    document.getElementById("moodText").innerText = "今天也要把微小的光保存下来。";
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
 <script>
     const lines = [
         "欢迎回来，\n这里是孤克恩的\n个人空间",
@@ -193,45 +232,289 @@
     typeLine();
 
     function renderMonthCalendar() {
-            const grid = document.getElementById("calendarGrid");
-            const yearEl = document.getElementById("calendarYear");
-            const monthEl = document.getElementById("calendarMonth");
+        const grid = document.getElementById("calendarGrid");
+        const yearEl = document.getElementById("calendarYear");
+        const monthEl = document.getElementById("calendarMonth");
 
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = today.getMonth();
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth();
 
-            yearEl.innerText = year;
-            monthEl.innerText = String(month + 1).padStart(2, "0");
+        yearEl.innerText = year;
+        monthEl.innerText = String(month + 1).padStart(2, "0");
 
-            const firstDay = new Date(year, month, 1).getDay();
-            const days = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+        const days = new Date(year, month + 1, 0).getDate();
 
-            grid.innerHTML = "";
+        grid.innerHTML = "";
 
-            for (let i = 0; i < firstDay; i++) {
-                grid.appendChild(document.createElement("div"));
+        for (let i = 0; i < firstDay; i++) {
+            grid.appendChild(document.createElement("div"));
+        }
+
+        for (let day = 1; day <= days; day++) {
+            const item = document.createElement("div");
+            item.className = "calendar-day";
+
+            if (day === today.getDate()) {
+                item.classList.add("today");
             }
 
-            for (let day = 1; day <= days; day++) {
-                const item = document.createElement("div");
-                item.className = "calendar-day";
-
-                if (day === today.getDate()) {
-                    item.classList.add("today");
-                }
-
-                item.innerHTML = `
+            item.innerHTML = `
       <strong>${day}</strong>
       <small></small>
     `;
 
-                grid.appendChild(item);
-            }
+            grid.appendChild(item);
+        }
+    }
+
+    renderMonthCalendar();
+
+
+</script>
+
+
+<div id="musicData" style="display:none;">
+    
+    <div class="music-item" data-title="NIGHT DANCER" data-artist="imase" data-file="/music/imase - NIGHT DANCER.mp3"
+        data-cover="/images/music/imase - NIGHT DANCER.png" data-lyric="/lyrics/imase - NIGHT DANCER.lrc">
+    </div>
+    
+    <div class="music-item" data-title="群青" data-artist="YOASOBI" data-file="/music/YOASOBI - 群青.mp3"
+        data-cover="/images/music/YOASOBI - 群青.png" data-lyric="">
+    </div>
+    
+    <div class="music-item" data-title="第六感" data-artist="Reol" data-file="/music/Reol - 第六感.mp3"
+        data-cover="/images/music/Reol - 第六感.png" data-lyric="">
+    </div>
+    
+</div>
+
+<script>
+    (function () {
+        const musicList = Array.from(document.querySelectorAll(".music-item")).map(item => ({
+            title: item.dataset.title,
+            artist: item.dataset.artist,
+            file: item.dataset.file,
+            cover: item.dataset.cover,
+            lyric: item.dataset.lyric
+        }));
+
+        if (!musicList.length) return;
+
+        let currentMusic = 0;
+
+        let playMode = "order";
+
+        const audioPlayer = document.getElementById("audioPlayer");
+        const musicCover = document.getElementById("musicCover");
+        const musicTitle = document.getElementById("musicTitle");
+        const musicArtist = document.getElementById("musicArtist");
+        const playMusic = document.getElementById("playMusic");
+        const prevMusic = document.getElementById("prevMusic");
+        const nextMusic = document.getElementById("nextMusic");
+        const playModeBtn = document.getElementById("playMode");
+
+        const progressBar = document.getElementById("progressBar");
+        const currentTime = document.getElementById("currentTime");
+        const durationTime = document.getElementById("durationTime");
+
+        const lyricBox = document.getElementById("lyricBox");
+        const lyricLines = document.getElementById("lyricLines");
+        let currentLyricIndex = -1;
+
+        let lyrics = [];
+
+        function parseLrc(text) {
+            return text.split("\n").map(line => {
+                const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+                if (!match) return null;
+
+                return {
+                    time: Number(match[1]) * 60 + Number(match[2]),
+                    text: match[3].trim()
+                };
+            }).filter(Boolean);
         }
 
-        renderMonthCalendar();
+        async function loadLyric(url) {
+    currentLyricIndex = -1;
+
+    if (!url) {
+        lyrics = [];
+        lyricLines.innerHTML = "<p>暂无歌词</p>";
+        return;
+    }
+
+    const res = await fetch(url);
+    const text = await res.text();
+
+    lyrics = parseLrc(text);
+
+    if (!lyrics.length) {
+        lyricLines.innerHTML = "<p>暂无歌词</p>";
+        return;
+    }
+
+    lyricLines.innerHTML = lyrics.map((line, index) => {
+        return `<p data-index="${index}">${line.text}</p>`;
+    }).join("");
+}
+
+        function formatTime(time) {
+            if (isNaN(time)) return "0:00";
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${String(seconds).padStart(2, "0")}`;
+        }
+
+        function loadMusic(index) {
+            const music = musicList[index];
+
+            musicCover.src = music.cover;
+            musicTitle.innerText = music.title;
+            musicArtist.innerText = music.artist;
+            audioPlayer.src = music.file;
+            loadLyric(music.lyric);
+        }
+
+        function playCurrentMusic() {
+            audioPlayer.play();
+            playMusic.innerText = "暂停";
+            musicCover.classList.add("playing");
+        }
+
+        playMusic.addEventListener("click", () => {
+            if (audioPlayer.paused) {
+                playCurrentMusic();
+            } else {
+                audioPlayer.pause();
+                playMusic.innerText = "播放";
+                musicCover.classList.remove("playing");
+            }
+        });
+
+        prevMusic.addEventListener("click", () => {
+            currentMusic = (currentMusic - 1 + musicList.length) % musicList.length;
+            loadMusic(currentMusic);
+            playCurrentMusic();
+            renderMusicList();
+        });
+
+        nextMusic.addEventListener("click", () => {
+            currentMusic = (currentMusic + 1) % musicList.length;
+            loadMusic(currentMusic);
+            playCurrentMusic();
+            renderMusicList();
+        });
+        playModeBtn.addEventListener("click", () => {
+            if (playMode === "order") {
+                playMode = "random";
+                playModeBtn.innerText = "随机播放";
+            } else if (playMode === "random") {
+                playMode = "single";
+                playModeBtn.innerText = "单曲循环";
+            } else {
+                playMode = "order";
+                playModeBtn.innerText = "顺序播放";
+            }
+        });
+
+
+        audioPlayer.addEventListener("loadedmetadata", () => {
+            durationTime.innerText = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener("timeupdate", () => {
+            if (!audioPlayer.duration) return;
+
+            progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            currentTime.innerText = formatTime(audioPlayer.currentTime);
+            let index = lyrics.findIndex((line, i) => {
+                const next = lyrics[i + 1];
+                return audioPlayer.currentTime >= line.time &&
+                    (!next || audioPlayer.currentTime < next.time);
+            });
+
+            if (index !== -1 && index !== currentLyricIndex) {
+                currentLyricIndex = index;
+
+                document.querySelectorAll("#lyricLines p").forEach(p => {
+                    p.classList.remove("active");
+                });
+
+                const activeLine = document.querySelector(`#lyricLines p[data-index="${index}"]`);
+
+                if (activeLine) {
+                    activeLine.classList.add("active");
+                    activeLine.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }
+            }
+        });
+
+        progressBar.addEventListener("input", () => {
+            if (!audioPlayer.duration) return;
+
+            audioPlayer.currentTime =
+                (progressBar.value / 100) * audioPlayer.duration;
+        });
+        audioPlayer.addEventListener("ended", () => {
+            if (playMode === "single") {
+                audioPlayer.currentTime = 0;
+                playCurrentMusic();
+                return;
+            }
+
+            if (playMode === "random") {
+                currentMusic = Math.floor(Math.random() * musicList.length);
+                loadMusic(currentMusic);
+                playCurrentMusic();
+                renderMusicList();
+                return;
+            }
+
+            nextMusic.click();
+        });
+
+        const musicListBox = document.getElementById("musicList");
+
+        function renderMusicList() {
+            musicListBox.innerHTML = "";
+
+            musicList.forEach((music, index) => {
+                const item = document.createElement("div");
+
+                item.className = "music-list-item";
+
+                if (index === currentMusic) {
+                    item.classList.add("active");
+                }
+
+                item.innerHTML = `
+            <span>${music.title}</span>
+            <small>${music.artist}</small>
+        `;
+
+                item.addEventListener("click", () => {
+                    currentMusic = index;
+                    loadMusic(currentMusic);
+                    playCurrentMusic();
+                    renderMusicList();
+                });
+
+                musicListBox.appendChild(item);
+            });
+        }
+
+        loadMusic(currentMusic);
+        renderMusicList();
+    })();
 </script>
+
 
     </main>
     <button id="backToTop" class="back-to-top">↑</button>
