@@ -414,6 +414,25 @@
         loadMusic(currentMusic);
         renderMusicList();
     })();
+
+    function updateBackgroundByTime() {
+            const hour = new Date().getHours();
+            const bg = document.body;
+
+            if (hour >= 6 && hour < 18) {
+                bg.style.backgroundImage = "url('./images/dg1.jpg')";
+            } else {
+                bg.style.backgroundImage = "url('./images/dg2.jpg')";
+            }
+
+            bg.style.backgroundSize = "cover";
+            bg.style.backgroundPosition = "center";
+            bg.style.backgroundRepeat = "no-repeat";
+            bg.style.backgroundAttachment = "fixed";
+        }
+
+        updateBackgroundByTime();
+        setInterval(updateBackgroundByTime, 60 * 1000);
 </script>
 
 {{ end }}
